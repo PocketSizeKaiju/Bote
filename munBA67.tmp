@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://dyhu5kamp485q"]
+
+[ext_resource type="PackedScene" uid="uid://4pbnis58284y" path="res://bote.tscn" id="1_in02g"]
+[ext_resource type="Shader" path="res://aguita.gdshader" id="2_ea7l5"]
+[ext_resource type="Script" path="res://Crate.gd" id="3_t8j0i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ho0at"]
+render_priority = 0
+shader = ExtResource("2_ea7l5")
+shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
+shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(550, 550)
+shader_parameter/wave_speed = 1.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7vrb6"]
+material = SubResource("ShaderMaterial_ho0at")
+size = Vector2(20, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_80wp5"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2v1wl"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[node name="Mundo" type="Node3D"]
+
+[node name="Bote" parent="." instance=ExtResource("1_in02g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171631, 3.18519, -0.0637817)
+
+[node name="Agua" type="MeshInstance3D" parent="."]
+transform = Transform3D(-339.128, 0, -587.387, 0, 1.32296, 0, 587.387, 0, -339.128, 0, -0.670041, 0)
+mesh = SubResource("PlaneMesh_7vrb6")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+script = ExtResource("3_t8j0i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.98465, -8.02454)
+mesh = SubResource("BoxMesh_80wp5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.02454)
+shape = SubResource("ConvexPolygonShape3D_2v1wl")

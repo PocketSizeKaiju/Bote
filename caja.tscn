@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpene7g4htrjw"]
+
+[ext_resource type="Script" path="res://Crate.gd" id="1_6sk38"]
+[ext_resource type="Texture2D" uid="uid://btwu0hv7ppe2c" path="res://Extras/assets/minimapIcon_exclamationYellow.png" id="2_4vo68"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c8p3g"]
+albedo_color = Color(0.896362, 0.00081495, 0.923419, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_80wp5"]
+material = SubResource("StandardMaterial3D_c8p3g")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2v1wl"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[node name="Caja" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.145569, 0)
+script = ExtResource("1_6sk38")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0.0491886, 3.91324, -8.12946)
+layers = 512
+axis = 1
+billboard = 2
+texture = ExtResource("2_4vo68")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.653504, -8.02454)
+mesh = SubResource("BoxMesh_80wp5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.0184631, -8.02454)
+shape = SubResource("ConvexPolygonShape3D_2v1wl")

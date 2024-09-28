@@ -1,0 +1,175 @@
+[gd_scene load_steps=18 format=3 uid="uid://dyhu5kamp485q"]
+
+[ext_resource type="PackedScene" uid="uid://4pbnis58284y" path="res://bote.tscn" id="1_in02g"]
+[ext_resource type="Shader" path="res://aguita.gdshader" id="2_ea7l5"]
+[ext_resource type="PackedScene" uid="uid://dpene7g4htrjw" path="res://caja.tscn" id="3_aq71m"]
+[ext_resource type="Script" path="res://Crate.gd" id="3_t8j0i"]
+[ext_resource type="Script" path="res://CamaraMiniMapa.gd" id="5_pgws6"]
+[ext_resource type="Texture2D" uid="uid://c35iva4dwulbf" path="res://Extras/assets/minimapIcon_jewelRed.png" id="5_qoeh6"]
+[ext_resource type="Texture2D" uid="uid://duort612t2fv0" path="res://Extras/assets/panel_woodDetail_blank.png" id="6_gxsxp"]
+[ext_resource type="Texture2D" uid="uid://bf7fodg0l8dqc" path="res://Extras/assets/pattern_blueprintPaper.png" id="8_l1uvh"]
+[ext_resource type="ArrayMesh" uid="uid://btplbs85uhcmx" path="res://Extras/botecito.obj" id="9_eh7q0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e6u8y"]
+sky_top_color = Color(0.530959, 0.942714, 0.892357, 1)
+sky_horizon_color = Color(0.68274, 0.881757, 0.830932, 1)
+ground_bottom_color = Color(0.2, 0.584314, 0.431373, 1)
+ground_horizon_color = Color(0.68274, 0.881757, 0.830932, 1)
+
+[sub_resource type="Sky" id="Sky_hhksk"]
+sky_material = SubResource("ProceduralSkyMaterial_e6u8y")
+
+[sub_resource type="Environment" id="Environment_ceba2"]
+background_mode = 2
+sky = SubResource("Sky_hhksk")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ho0at"]
+render_priority = 0
+shader = ExtResource("2_ea7l5")
+shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
+shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(550, 550)
+shader_parameter/wave_speed = 1.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7vrb6"]
+material = SubResource("ShaderMaterial_ho0at")
+size = Vector2(20, 20)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2v1wl"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5e64"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0)
+shadow_color = Color(0.15456, 0.0940745, 0.0790521, 0.701961)
+shadow_offset = Vector2(5, 10)
+
+[sub_resource type="Environment" id="Environment_la3p0"]
+background_mode = 1
+background_color = Color(0.755676, 0.445804, 0.188365, 1)
+
+[node name="Mundo" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ceba2")
+
+[node name="Bote" parent="." instance=ExtResource("1_in02g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.247131, 0)
+
+[node name="Agua" type="MeshInstance3D" parent="."]
+transform = Transform3D(-339.128, 0, -587.387, 0, 1.32296, 0, 587.387, 0, -339.128, 0, 0.0224333, 0)
+mesh = SubResource("PlaneMesh_7vrb6")
+
+[node name="Caja" parent="." instance=ExtResource("3_aq71m")]
+
+[node name="Caja6" parent="." instance=ExtResource("3_aq71m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.1135, 0.145569, -30.598)
+
+[node name="Caja7" parent="." instance=ExtResource("3_aq71m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.2166, 0.145569, 4.61857)
+
+[node name="Caja8" parent="." instance=ExtResource("3_aq71m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.0826, 0.145569, -30.4056)
+
+[node name="Caja9" parent="." instance=ExtResource("3_aq71m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3369, 0.145569, 45.9932)
+
+[node name="BoteMalo" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.69868, 0.145569, 54.4023)
+script = ExtResource("3_t8j0i")
+
+[node name="Sprite3D" type="Sprite3D" parent="BoteMalo"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 6.17822, -8.06829)
+layers = 512
+axis = 1
+texture = ExtResource("5_qoeh6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BoteMalo"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.653504, -8.02454)
+mesh = ExtResource("9_eh7q0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoteMalo"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.0184631, -8.02454)
+shape = SubResource("ConvexPolygonShape3D_2v1wl")
+
+[node name="BoteMalo2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.943, 0.145569, -23.8289)
+script = ExtResource("3_t8j0i")
+
+[node name="Sprite3D" type="Sprite3D" parent="BoteMalo2"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -0.0997753, 6.57397, -8.0314)
+layers = 512
+axis = 1
+texture = ExtResource("5_qoeh6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BoteMalo2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.653504, -8.02454)
+mesh = ExtResource("9_eh7q0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoteMalo2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.0184631, -8.02454)
+shape = SubResource("ConvexPolygonShape3D_2v1wl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139, 105, 109)
+light_energy = 1.5
+light_indirect_energy = 1.5
+
+[node name="MiniMapa" type="MarginContainer" parent="."]
+offset_left = 740.0
+offset_top = 356.0
+offset_right = 780.0
+offset_bottom = 396.0
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="PanelContainer" type="PanelContainer" parent="MiniMapa"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_y5e64")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MiniMapa/PanelContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="MiniMapa/PanelContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(360, 240)
+render_target_update_mode = 4
+
+[node name="CamaraMiniMapa" type="Camera3D" parent="MiniMapa/PanelContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 23.9203, 0)
+cull_mask = 1048064
+environment = SubResource("Environment_la3p0")
+projection = 1
+size = 25.0
+script = ExtResource("5_pgws6")
+
+[node name="Fondo" type="MarginContainer" parent="MiniMapa"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TextureRect" type="TextureRect" parent="MiniMapa/Fondo"]
+layout_mode = 2
+texture = ExtResource("8_l1uvh")
+stretch_mode = 1
+
+[node name="Borde" type="NinePatchRect" parent="MiniMapa"]
+layout_mode = 2
+texture = ExtResource("6_gxsxp")
+patch_margin_left = 64
+patch_margin_top = 64
+patch_margin_right = 64
+patch_margin_bottom = 64
