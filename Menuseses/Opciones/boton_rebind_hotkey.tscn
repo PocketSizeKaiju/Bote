@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk25ie5njeacl"]
+
+[ext_resource type="Script" path="res://Menuseses/Opciones/boton_rebind_hotkey.gd" id="1_pigxd"]
+
+[node name="Boton_Rebind_Hotkey" type="Control" groups=["boton_tecla"]]
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+script = ExtResource("1_pigxd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Accion"
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 200
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+toggle_mode = true
+text = "Tecla_accion"
+
+[connection signal="toggled" from="HBoxContainer/Button" to="." method="_cuando_boton_alternado"]

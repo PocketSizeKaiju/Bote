@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4cyn2u8ttahn"]
+
+[ext_resource type="Texture2D" uid="uid://bf7fodg0l8dqc" path="res://Extras/assets/pattern_blueprintPaper.png" id="1_emp6f"]
+[ext_resource type="Script" path="res://Menuseses/menu_principal.gd" id="1_hv4qy"]
+[ext_resource type="PackedScene" uid="uid://dt4pllwj2lxa8" path="res://Menuseses/Opciones/menu_opciones.tscn" id="3_fegva"]
+
+[sub_resource type="SystemFont" id="SystemFont_o8ehk"]
+font_names = PackedStringArray("Fantasy")
+
+[sub_resource type="SystemFont" id="SystemFont_5cqpr"]
+font_names = PackedStringArray("Impact")
+
+[node name="Menu_Principal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hv4qy")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_emp6f")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Separador" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Titulo" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = SubResource("SystemFont_o8ehk")
+theme_override_font_sizes/font_size = 64
+text = "TITULAZO
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Separador" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BotonInicio" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_5cqpr")
+theme_override_font_sizes/font_size = 24
+text = "Comenzar juego"
+
+[node name="BotonOpciones" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_5cqpr")
+theme_override_font_sizes/font_size = 24
+text = "Opciones"
+
+[node name="BotonSalir" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_5cqpr")
+theme_override_font_sizes/font_size = 24
+text = "Salir del juego
+"
+
+[node name="menu_opciones" parent="." instance=ExtResource("3_fegva")]
+visible = false
+layout_mode = 1
