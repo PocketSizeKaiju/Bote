@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx12rx8vcdwvn"]
+
+[ext_resource type="PackedScene" uid="uid://0rvrpsminwq1" path="res://Menuseses/Opciones/boton_opciones_visualizacion.tscn" id="1_e63or"]
+[ext_resource type="Script" path="res://Menuseses/Opciones/boton_modo_ventana.gd" id="2_cnyko"]
+
+[node name="Boton_Modo_Ventana" instance=ExtResource("1_e63or")]
+script = ExtResource("2_cnyko")
+
+[node name="Label" parent="HBoxContainer" index="0"]
+text = "Modo Ventana"

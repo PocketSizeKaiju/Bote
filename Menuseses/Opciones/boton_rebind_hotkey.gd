@@ -11,7 +11,10 @@ func _ready():
 	set_process_unhandled_key_input(false)
 	asignar_nombre_accion()
 	asignar_texto_para_boton()
+	cargar_keybinds()
 
+func cargar_keybinds() -> void:
+	reescribir_accion_boton(ContenedorConfiguracion.obtener_keybind(nombre_accion))
 
 func asignar_nombre_accion() -> void:
 	label.text = "No asignado"
@@ -58,6 +61,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func reescribir_accion_boton(event: InputEvent) -> void:
 	InputMap.action_erase_events(nombre_accion)
 	InputMap.action_add_event(nombre_accion, event)
+	ContenedorConfiguracion.asignar_keybind(nombre_accion, event)
 	
 	set_process_unhandled_key_input(false)
 	asignar_texto_para_boton()

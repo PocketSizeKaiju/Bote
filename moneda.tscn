@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://duki6ia8t0hb"]
+[gd_scene load_steps=6 format=3 uid="uid://duki6ia8t0hb"]
 
 [ext_resource type="Script" path="res://colectable.gd" id="1_xc2ah"]
 [ext_resource type="Texture2D" uid="uid://btwu0hv7ppe2c" path="res://Extras/assets/minimapIcon_exclamationYellow.png" id="2_ubmxl"]
+[ext_resource type="AudioStream" uid="uid://dn52smdvdto71" path="res://Extras/assets/Chime2.ogg" id="3_md5d5"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_2n4ck"]
 top_radius = 0.3
@@ -29,5 +30,9 @@ mesh = SubResource("CylinderMesh_2n4ck")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_71tiq")
+
+[node name="AudioMoneda" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_md5d5")
+bus = &"Sfx"
 
 [connection signal="body_shape_entered" from="." to="." method="_cuando_entra_un_cuerpo"]

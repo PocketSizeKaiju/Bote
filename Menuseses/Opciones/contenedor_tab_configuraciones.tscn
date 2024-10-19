@@ -1,6 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dthtk7eav5unb"]
+[gd_scene load_steps=8 format=3 uid="uid://dthtk7eav5unb"]
 
 [ext_resource type="PackedScene" uid="uid://dk25ie5njeacl" path="res://Menuseses/Opciones/boton_rebind_hotkey.tscn" id="1_mjyv1"]
+[ext_resource type="PackedScene" uid="uid://ddpnawud3guon" path="res://Menuseses/Opciones/slider_audio.tscn" id="1_t8x2t"]
+[ext_resource type="Script" path="res://Menuseses/Opciones/contenedor_tab_configuraciones.gd" id="1_wlayo"]
+[ext_resource type="PackedScene" uid="uid://cx12rx8vcdwvn" path="res://Menuseses/Opciones/boton_modo_ventana.tscn" id="1_wu6at"]
+[ext_resource type="PackedScene" uid="uid://cne1jhdwvu7vx" path="res://Menuseses/Opciones/boton_modo_resolucion.tscn" id="2_yship"]
+[ext_resource type="PackedScene" uid="uid://d3h84f2eoia1" path="res://Menuseses/Opciones/boton_activar_subtitulos.tscn" id="5_0e7lf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_enslc"]
 
@@ -11,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wlayo")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
@@ -24,7 +30,7 @@ offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 2
+current_tab = 3
 
 [node name="Sonido" type="TabBar" parent="TabContainer"]
 visible = false
@@ -43,30 +49,28 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sonido/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Sonido/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sonido/MarginContainer/ScrollContainer"]
 layout_mode = 2
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Sonido/MarginContainer/VBoxContainer"]
+[node name="Slider_Audio" parent="TabContainer/Sonido/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_t8x2t")]
 layout_mode = 2
-text = "Sonido"
+nombre_bus = "Master"
 
-[node name="Label2" type="Label" parent="TabContainer/Sonido/MarginContainer/VBoxContainer"]
+[node name="Slider_Audio2" parent="TabContainer/Sonido/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_t8x2t")]
 layout_mode = 2
-text = "Sonido1"
+nombre_bus = "Musica"
 
-[node name="Label3" type="Label" parent="TabContainer/Sonido/MarginContainer/VBoxContainer"]
+[node name="Slider_Audio3" parent="TabContainer/Sonido/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_t8x2t")]
 layout_mode = 2
-text = "Sonido1a"
 
-[node name="Label4" type="Label" parent="TabContainer/Sonido/MarginContainer/VBoxContainer"]
+[node name="Slider_Audio4" parent="TabContainer/Sonido/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_t8x2t")]
 layout_mode = 2
-text = "Sonido1asf"
-
-[node name="Label5" type="Label" parent="TabContainer/Sonido/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "aSonido1"
+nombre_bus = "Voces"
 
 [node name="Gráficos" type="TabBar" parent="TabContainer"]
 visible = false
@@ -85,17 +89,22 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Gráficos/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Gráficos/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Gráficos/MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 128
 alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Gráficos/MarginContainer/VBoxContainer"]
+[node name="Boton_Modo_Ventana" parent="TabContainer/Gráficos/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_wu6at")]
 layout_mode = 2
-text = "graficos
-"
+
+[node name="Boton_Modo_Resolucion" parent="TabContainer/Gráficos/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_yship")]
+layout_mode = 2
 
 [node name="Controles" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -148,7 +157,6 @@ theme_override_constants/separation = 12
 theme_override_styles/separator = SubResource("StyleBoxEmpty_enslc")
 
 [node name="Accesibilidad" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
@@ -164,12 +172,13 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Accesibilidad/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Accesibilidad/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Accesibilidad/MarginContainer/ScrollContainer"]
 layout_mode = 2
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Accesibilidad/MarginContainer/VBoxContainer"]
+[node name="Boton_Activar_Subtitulos" parent="TabContainer/Accesibilidad/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_0e7lf")]
 layout_mode = 2
-text = "access
-"

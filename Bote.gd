@@ -3,6 +3,7 @@ extends RigidBody3D
 var movimiento_cursor = Vector2()
 
 @export var tesoroTotal: int = 0
+@onready var reproductorAudio: AudioStreamPlayer2D = $AudioStreamPlayer2D as AudioStreamPlayer2D
 
 
 func _ready():
@@ -24,6 +25,7 @@ func _physics_process(delta):
 	
 	if global_transform.origin.y <= 0.1:
 		if Input.is_action_just_pressed("espacio"):
+			reproductorAudio.play()
 			apply_central_force(global_transform.basis * Vector3.UP*500)
 		if Input.is_action_pressed("w"):
 			apply_central_force(global_transform.basis * Vector3.FORWARD*20)

@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="RecursoKeybinfJugador" load_steps=7 format=3 uid="uid://4yhhfdac0aub"]
+
+[ext_resource type="Script" path="res://Menuseses/Opciones/recursos/RecursoKeybindJugador.gd" id="1_8rwa1"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_gn315"]
+device = -1
+physical_keycode = 83
+unicode = 115
+
+[sub_resource type="InputEventKey" id="InputEventKey_bbue1"]
+device = -1
+physical_keycode = 87
+unicode = 119
+
+[sub_resource type="InputEventKey" id="InputEventKey_kapf0"]
+device = -1
+physical_keycode = 68
+unicode = 100
+
+[sub_resource type="InputEventKey" id="InputEventKey_kc5ab"]
+device = -1
+physical_keycode = 65
+unicode = 97
+
+[sub_resource type="InputEventKey" id="InputEventKey_j4h3s"]
+device = -1
+physical_keycode = 32
+unicode = 32
+
+[resource]
+script = ExtResource("1_8rwa1")
+TECLA_MOVER_IZQUIERDA_POR_DEFECTO = SubResource("InputEventKey_kc5ab")
+TECLA_MOVER_DERECHA_POR_DEFECTO = SubResource("InputEventKey_kapf0")
+TECLA_MOVER_ARRIBA_POR_DEFECTO = SubResource("InputEventKey_bbue1")
+TECLA_MOVER_ABAJO_POR_DEFECTO = SubResource("InputEventKey_gn315")
+TECLA_SALTAR_POR_DEFECTO = SubResource("InputEventKey_j4h3s")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4cyn2u8ttahn"]
+[gd_scene load_steps=7 format=3 uid="uid://d4cyn2u8ttahn"]
 
 [ext_resource type="Texture2D" uid="uid://bf7fodg0l8dqc" path="res://Extras/assets/pattern_blueprintPaper.png" id="1_emp6f"]
 [ext_resource type="Script" path="res://Menuseses/menu_principal.gd" id="1_hv4qy"]
 [ext_resource type="PackedScene" uid="uid://dt4pllwj2lxa8" path="res://Menuseses/Opciones/menu_opciones.tscn" id="3_fegva"]
+[ext_resource type="AudioStream" uid="uid://b0xqxkrhut1ak" path="res://Extras/assets/LocoDeVos -Karaoke-.mp3" id="4_hmk2e"]
 
 [sub_resource type="SystemFont" id="SystemFont_o8ehk"]
 font_names = PackedStringArray("Fantasy")
@@ -95,3 +96,9 @@ text = "Salir del juego
 [node name="menu_opciones" parent="." instance=ExtResource("3_fegva")]
 visible = false
 layout_mode = 1
+
+[node name="ReproductorDeMusica" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hmk2e")
+volume_db = -14.0
+autoplay = true
+bus = &"Musica"

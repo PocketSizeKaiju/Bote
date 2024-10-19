@@ -15,6 +15,13 @@ run/main_scene="res://Menuseses/menu_principal.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Seniales="*res://BusSeniales.gd"
+ContenedorConfiguracion="*res://Menuseses/autocargas/ContenedorDatosConfiguracion.gd"
+BusSenialConfiguracion="*res://Menuseses/autocargas/BusSenialConfiguracion.gd"
+AdministradorGuardado="*res://Menuseses/autocargas/AdministradorGuardado.gd"
+
 [dotnet]
 
 project/assembly_name="Piratas"

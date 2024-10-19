@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="RecursosConfiguracionPorDefectos" load_steps=2 format=3 uid="uid://b2h3bcyygv1tq"]
+
+[ext_resource type="Script" path="res://Menuseses/Opciones/recursos/RecursosConfiguracion.gd" id="1_b24kj"]
+
+[resource]
+script = ExtResource("1_b24kj")
