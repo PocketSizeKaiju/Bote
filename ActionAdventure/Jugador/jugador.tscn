@@ -1,0 +1,93 @@
+[gd_scene load_steps=11 format=3 uid="uid://o256rqgw6ndx"]
+
+[ext_resource type="Texture2D" uid="uid://ex54s12v5rf8" path="res://ActionAdventure/Jugador/Sprites/64175.png" id="1_bymxi"]
+[ext_resource type="Script" path="res://ActionAdventure/Jugador/Codigos/jugador.gd" id="1_slxlv"]
+[ext_resource type="Script" path="res://ActionAdventure/Jugador/Codigos/Estados/maquinaDeEstadoJugador.gd" id="3_axj8r"]
+[ext_resource type="Script" path="res://ActionAdventure/Jugador/Codigos/Estados/estado_inactivo.gd" id="4_fesus"]
+[ext_resource type="Script" path="res://ActionAdventure/Jugador/Codigos/Estados/estado_caminar.gd" id="5_tve1m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2fni"]
+size = Vector2(24, 19)
+
+[sub_resource type="Animation" id="Animation_0e22u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ikx50"]
+resource_name = "caminar"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 8]
+}
+
+[sub_resource type="Animation" id="Animation_gymsk"]
+resource_name = "inactivo"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g54hp"]
+_data = {
+"RESET": SubResource("Animation_0e22u"),
+"caminar": SubResource("Animation_ikx50"),
+"inactivo": SubResource("Animation_gymsk")
+}
+
+[node name="Jugador" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_slxlv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_v2fni")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bymxi")
+hframes = 4
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_g54hp")
+}
+
+[node name="Maquina de Estados" type="Node" parent="."]
+script = ExtResource("3_axj8r")
+
+[node name="inactivo" type="Node" parent="Maquina de Estados"]
+script = ExtResource("4_fesus")
+
+[node name="caminar" type="Node" parent="Maquina de Estados"]
+script = ExtResource("5_tve1m")
