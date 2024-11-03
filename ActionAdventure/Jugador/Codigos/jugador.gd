@@ -8,6 +8,8 @@ var direccion : Vector2 = Vector2.ZERO
 @onready var sprite_2d: Sprite2D = $Sprite2D as Sprite2D
 @onready var maquina_de_estados: MaquinaDeEstadoJugador = $"Maquina de Estados" as MaquinaDeEstadoJugador
 
+signal cambioDireccion(nueva_direccion: Vector2)
+
 func _ready() -> void:
 	maquina_de_estados.inicializar(self)
 
@@ -30,6 +32,7 @@ func asignarDireccion() -> bool:
 		nueva_direccion = Vector2.UP if direccion.y < 0 else Vector2.DOWN
 	
 	direccion_cardinal = nueva_direccion
+	cambioDireccion.emit(direccion_cardinal)
 	sprite_2d.scale.x = -1 if direccion_cardinal == Vector2.LEFT else 1
 	return true
 

@@ -52,6 +52,13 @@ control={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Jugador"
+2d_physics/layer_2="JugadorLastima"
+2d_physics/layer_5="Paredes"
+2d_physics/layer_9="Enemigo"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
