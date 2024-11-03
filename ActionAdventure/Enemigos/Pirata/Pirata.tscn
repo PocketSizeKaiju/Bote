@@ -1,0 +1,262 @@
+[gd_scene load_steps=16 format=3 uid="uid://clrx85fehyw3d"]
+
+[ext_resource type="Script" path="res://ActionAdventure/Enemigos/Codigos/enemigo.gd" id="1_j67sd"]
+[ext_resource type="Texture2D" uid="uid://olpbdshtd47f" path="res://ActionAdventure/Enemigos/Pirata/Sprites/pirata.png" id="1_rc7a0"]
+[ext_resource type="Texture2D" uid="uid://stthicl2dcvt" path="res://ActionAdventure/Jugador/Sprites/Shadow.png" id="2_w73cj"]
+[ext_resource type="Script" path="res://ActionAdventure/Enemigos/Codigos/MaquinaDeEstadoEnemigo.gd" id="4_oxu70"]
+[ext_resource type="Script" path="res://ActionAdventure/Enemigos/Codigos/estados/estado_enemigo_inactivo.gd" id="5_0k126"]
+[ext_resource type="Script" path="res://ActionAdventure/Enemigos/Codigos/estados/estado_enemigo_pasear.gd" id="6_nlmx5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ox7xr"]
+height = 32.0
+
+[sub_resource type="Animation" id="Animation_pn5ni"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, -23)]
+}
+
+[sub_resource type="Animation" id="Animation_acpxf"]
+resource_name = "caminar_abajo"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 21, 16]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_padgs"]
+resource_name = "caminar_arriba"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 21, 16]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x2uh4"]
+resource_name = "caminar_costado"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 21, 16]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y5c03"]
+resource_name = "inactivo_abajo"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, -23)]
+}
+
+[sub_resource type="Animation" id="Animation_rpl5x"]
+resource_name = "inactivo_arriba"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, -23)]
+}
+
+[sub_resource type="Animation" id="Animation_au74b"]
+resource_name = "inactivo_costado"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, -23)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ibqx8"]
+_data = {
+"RESET": SubResource("Animation_pn5ni"),
+"caminar_abajo": SubResource("Animation_acpxf"),
+"caminar_arriba": SubResource("Animation_padgs"),
+"caminar_costado": SubResource("Animation_x2uh4"),
+"inactivo_abajo": SubResource("Animation_y5c03"),
+"inactivo_arriba": SubResource("Animation_rpl5x"),
+"inactivo_costado": SubResource("Animation_au74b")
+}
+
+[node name="Pirata" type="CharacterBody2D"]
+collision_layer = 256
+collision_mask = 16
+script = ExtResource("1_j67sd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10, -23)
+texture = ExtResource("1_rc7a0")
+hframes = 8
+vframes = 3
+
+[node name="SombraSprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.484375, 0.128662, 0.128662, 1)
+show_behind_parent = true
+position = Vector2(-1, 10)
+texture = ExtResource("2_w73cj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -6)
+shape = SubResource("CapsuleShape2D_ox7xr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ibqx8")
+}
+autoplay = "inactivo_abajo"
+
+[node name="MaquinaEstadoEnemigo" type="Node" parent="."]
+script = ExtResource("4_oxu70")
+
+[node name="Inactivo" type="Node" parent="MaquinaEstadoEnemigo" node_paths=PackedStringArray("despues_estado")]
+script = ExtResource("5_0k126")
+despues_estado = NodePath("../Pasear")
+
+[node name="Pasear" type="Node" parent="MaquinaEstadoEnemigo" node_paths=PackedStringArray("despues_estado")]
+script = ExtResource("6_nlmx5")
+velocidad_caminar = 30.0
+despues_estado = NodePath("../Inactivo")

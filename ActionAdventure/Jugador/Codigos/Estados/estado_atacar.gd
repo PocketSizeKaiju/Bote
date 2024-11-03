@@ -12,12 +12,12 @@ var atacando: bool = false
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer" as AnimationPlayer
 @onready var animation_player_ataque: AnimationPlayer = $"../../Sprite2D/EfectoAtaque/AnimationPlayer" as AnimationPlayer
 @onready var audio: AudioStreamPlayer2D = $"../../Audio/AudioStreamPlayer2D" as AudioStreamPlayer2D
-@onready var caja_danio: CajaDeDanio = $"../../Interacciones/CajaDanio" as CajaDeDanio
+@onready var caja_danio: CajaDeDanio = %CajaDanioAtaque as CajaDeDanio
 
 
 #Que pasa cuando el jugador entra este estado
 func entrar() -> void:
-	jugador.actualizarAnimacion("atacar")
+	jugador.actualizarAnimacion("atacar_" + jugador.direccionAnimacion())
 	animation_player_ataque.play("atacar_" + jugador.direccionAnimacion())
 	animation_player.animation_finished.connect(terminarAtaque)
 	

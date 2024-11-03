@@ -1,32 +1,32 @@
-class_name Jugador
+class_name Enemigo
 extends CharacterBody2D
 
 const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 
-var direccion_cardinal : Vector2 = Vector2.DOWN
-var direccion : Vector2 = Vector2.ZERO
+signal cambioDireccion(nueva_direccion: Vector2)
+signal enemigo_daniado()
+
+@export var hp: int = 3
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer as AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D as Sprite2D
-@onready var maquina_de_estados: MaquinaDeEstadoJugador = $"Maquina de Estados" as MaquinaDeEstadoJugador
+@onready var maquina_estado_enemigo: MaquinaDeEstadoEnemigo = $MaquinaEstadoEnemigo as MaquinaDeEstadoEnemigo
+#@onready var hit_box: HitBox = $HitBos as HitBox
 
-signal cambioDireccion(nueva_direccion: Vector2)
+var direccion_cardinal : Vector2 = Vector2.DOWN
+var direccion : Vector2 = Vector2.ZERO
+var jugador: Jugador
+var invulnerable: bool = false
 
 func _ready() -> void:
-	AdministradorGlobalJugador.jugador = self
-	maquina_de_estados.inicializar(self)
-
-func _process(_delta: float) -> void:
-	direccion = Vector2(
-		Input.get_axis("a", "d"),
-		Input.get_axis("w", "s")
-	).normalized()
-
+	maquina_estado_enemigo.inicializar(self)
+	jugador = AdministradorGlobalJugador.jugador
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
-func asignarDireccion() -> bool:
+func asignarDireccion(_nueva_direccion: Vector2) -> bool:
+	direccion = _nueva_direccion
 	if direccion == Vector2.ZERO:
 		return false
 	
@@ -39,7 +39,7 @@ func asignarDireccion() -> bool:
 	return true
 
 func actualizarAnimacion(estado: String) -> void:
-	animation_player.play(estado) # "_" + direccionAnimacion()
+	animation_player.play(estado + "_" + direccionAnimacion())
 
 func direccionAnimacion() -> String:
 	if direccion_cardinal == Vector2.DOWN:
