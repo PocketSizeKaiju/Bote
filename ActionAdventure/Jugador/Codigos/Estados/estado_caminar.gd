@@ -4,6 +4,7 @@ extends Estado
 @export var velocidad_mover : float = 100.0
 
 @onready var inactivo: Estado_Inactivo = $"../inactivo" as Estado
+@onready var atacar: Estado_Atacar = $"../atacar" as Estado
 
 #Que pasa cuando el jugador entra este estado
 func entrar() -> void:
@@ -29,4 +30,6 @@ func fisica (_delta: float) -> Estado:
 
 #Que pasa con los eventos del estado
 func manejarInput (_evento: InputEvent) -> Estado:
+	if _evento.is_action_pressed("control"):
+		return atacar
 	return null

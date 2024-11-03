@@ -1,13 +1,249 @@
-[gd_scene load_steps=11 format=3 uid="uid://o256rqgw6ndx"]
+[gd_scene load_steps=23 format=3 uid="uid://o256rqgw6ndx"]
 
 [ext_resource type="Texture2D" uid="uid://ex54s12v5rf8" path="res://ActionAdventure/Jugador/Sprites/64175.png" id="1_bymxi"]
 [ext_resource type="Script" path="res://ActionAdventure/Jugador/Codigos/jugador.gd" id="1_slxlv"]
+[ext_resource type="Texture2D" uid="uid://bt72lfjiv1g7i" path="res://ActionAdventure/Jugador/Sprites/AttackSprite01.png" id="3_5pkan"]
 [ext_resource type="Script" path="res://ActionAdventure/Jugador/Codigos/Estados/maquinaDeEstadoJugador.gd" id="3_axj8r"]
 [ext_resource type="Script" path="res://ActionAdventure/Jugador/Codigos/Estados/estado_inactivo.gd" id="4_fesus"]
+[ext_resource type="Texture2D" uid="uid://stthicl2dcvt" path="res://ActionAdventure/Jugador/Sprites/Shadow.png" id="4_xw722"]
 [ext_resource type="Script" path="res://ActionAdventure/Jugador/Codigos/Estados/estado_caminar.gd" id="5_tve1m"]
+[ext_resource type="Script" path="res://ActionAdventure/Jugador/Codigos/Estados/estado_atacar.gd" id="6_yamsg"]
+[ext_resource type="AudioStream" uid="uid://dlkb1kk3y1y8c" path="res://ActionAdventure/Jugador/Audio/SwordSwoosh.wav" id="8_ed4bp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v2fni"]
 size = Vector2(24, 19)
+
+[sub_resource type="Animation" id="Animation_abmof"]
+resource_name = "atacar_abajo"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:show_behind_parent")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_yxmd5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:show_behind_parent")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ati2i"]
+resource_name = "atacar_arriba"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [4, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:show_behind_parent")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_dbqu4"]
+resource_name = "atacar_costado"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [8, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:show_behind_parent")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_naojk"]
+resource_name = "no_ataque"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rulnm"]
+_data = {
+"RESET": SubResource("Animation_yxmd5"),
+"atacar_abajo": SubResource("Animation_abmof"),
+"atacar_arriba": SubResource("Animation_ati2i"),
+"atacar_costado": SubResource("Animation_dbqu4"),
+"no_ataque": SubResource("Animation_naojk")
+}
 
 [sub_resource type="Animation" id="Animation_0e22u"]
 length = 0.001
@@ -20,7 +256,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [0]
 }
 
@@ -54,13 +290,47 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_8av0r"]
+resource_name = "atacar_costado"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [8, 11, 3]
+}
+
+[sub_resource type="Animation" id="Animation_1564l"]
+resource_name = "atacar"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [8, 11, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g54hp"]
 _data = {
 "RESET": SubResource("Animation_0e22u"),
+"atacar": SubResource("Animation_1564l"),
+"atacar_costado": SubResource("Animation_8av0r"),
 "caminar": SubResource("Animation_ikx50"),
 "inactivo": SubResource("Animation_gymsk")
 }
@@ -78,6 +348,26 @@ texture = ExtResource("1_bymxi")
 hframes = 4
 vframes = 3
 
+[node name="Sombra_Sprite2D" type="Sprite2D" parent="Sprite2D"]
+
+[node name="EfectoAtaque" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(0, 10)
+texture = ExtResource("3_5pkan")
+hframes = 12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D/EfectoAtaque"]
+libraries = {
+"": SubResource("AnimationLibrary_rulnm")
+}
+autoplay = "no_ataque"
+
+[node name="Shadow" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.784314)
+show_behind_parent = true
+position = Vector2(0.5, 17)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_xw722")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_g54hp")
@@ -91,3 +381,13 @@ script = ExtResource("4_fesus")
 
 [node name="caminar" type="Node" parent="Maquina de Estados"]
 script = ExtResource("5_tve1m")
+
+[node name="atacar" type="Node" parent="Maquina de Estados"]
+script = ExtResource("6_yamsg")
+sonido_ataque = ExtResource("8_ed4bp")
+desacelerar_velocidad = 5.0
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio"]
+max_polyphony = 4

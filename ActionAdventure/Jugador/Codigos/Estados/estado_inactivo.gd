@@ -1,7 +1,8 @@
 class_name Estado_Inactivo
 extends Estado
 
-@onready var caminar: Estado_Caminar = $"../caminar"
+@onready var caminar: Estado_Caminar = $"../caminar" as Estado
+@onready var atacar: Estado_Atacar = $"../atacar" as Estado
 
 #Que pasa cuando el jugador entra este estado
 func entrar() -> void:
@@ -24,4 +25,6 @@ func fisica (_delta: float) -> Estado:
 
 #Que pasa con los eventos del estado
 func manejarInput (_evento: InputEvent) -> Estado:
+	if _evento.is_action_pressed("control"):
+		return atacar
 	return null
