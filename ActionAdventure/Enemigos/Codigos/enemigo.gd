@@ -5,13 +5,14 @@ const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 
 signal cambioDireccion(nueva_direccion: Vector2)
 signal enemigo_daniado()
+signal enemigo_destruido()
 
 @export var hp: int = 3
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer as AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D as Sprite2D
 @onready var maquina_estado_enemigo: MaquinaDeEstadoEnemigo = $MaquinaEstadoEnemigo as MaquinaDeEstadoEnemigo
-#@onready var hit_box: HitBox = $HitBos as HitBox
+@onready var hit_box: HitBox = $HitBox as HitBox
 
 var direccion_cardinal : Vector2 = Vector2.DOWN
 var direccion : Vector2 = Vector2.ZERO
@@ -21,6 +22,7 @@ var invulnerable: bool = false
 func _ready() -> void:
 	maquina_estado_enemigo.inicializar(self)
 	jugador = AdministradorGlobalJugador.jugador
+	hit_box.Daniado.connect(_tomar_danio)
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
@@ -48,3 +50,12 @@ func direccionAnimacion() -> String:
 		return "arriba"
 	else:
 		return "costado"
+
+func _tomar_danio(danio: int) -> void:
+	if invulnerable == true:
+		return
+	hp -= danio
+	if hp > 0:
+		enemigo_daniado.emit()
+	else:
+		enemigo_destruido.emit()
