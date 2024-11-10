@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if $CollisionShape3D.global_transform.origin.y <= 0:
 		apply_force(Vector3.UP*20*-$CollisionShape3D.global_transform.origin, $CollisionShape3D.global_transform.origin-global_transform.origin)
 

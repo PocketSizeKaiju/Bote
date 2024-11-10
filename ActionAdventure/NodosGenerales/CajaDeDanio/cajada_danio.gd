@@ -8,4 +8,4 @@ func _ready() -> void:
 
 func entroArea(area: Area2D) -> void:
 	if area is HitBox:
-		area.tomarGolpe(danio)
+		area.tomarGolpe(self)

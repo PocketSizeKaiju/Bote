@@ -17,7 +17,7 @@ var atacando: bool = false
 
 #Que pasa cuando el jugador entra este estado
 func entrar() -> void:
-	jugador.actualizarAnimacion("atacar_" + jugador.direccionAnimacion())
+	jugador.actualizarAnimacion("atacar")
 	animation_player_ataque.play("atacar_" + jugador.direccionAnimacion())
 	animation_player.animation_finished.connect(terminarAtaque)
 	

@@ -4,8 +4,8 @@ extends CharacterBody2D
 const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 
 signal cambioDireccion(nueva_direccion: Vector2)
-signal enemigo_daniado()
-signal enemigo_destruido()
+signal enemigo_daniado(caja_danio: CajaDeDanio)
+signal enemigo_destruido(caja_danio: CajaDeDanio)
 
 @export var hp: int = 3
 
@@ -51,11 +51,11 @@ func direccionAnimacion() -> String:
 	else:
 		return "costado"
 
-func _tomar_danio(danio: int) -> void:
+func _tomar_danio(caja_danio: CajaDeDanio) -> void:
 	if invulnerable == true:
 		return
-	hp -= danio
+	hp -= caja_danio.danio
 	if hp > 0:
-		enemigo_daniado.emit()
+		enemigo_daniado.emit(caja_danio)
 	else:
-		enemigo_destruido.emit()
+		enemigo_destruido.emit(caja_danio)

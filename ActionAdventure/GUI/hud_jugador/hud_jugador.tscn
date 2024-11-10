@@ -1,0 +1,92 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4qmfu8rybiry"]
+
+[ext_resource type="Texture2D" uid="uid://cysk73obsoent" path="res://Extras/abeja.png" id="1_2svor"]
+[ext_resource type="Script" path="res://ActionAdventure/GUI/hud_jugador/hud_jugador.gd" id="1_36v68"]
+[ext_resource type="PackedScene" uid="uid://dok3yyl73rxpr" path="res://ActionAdventure/GUI/hud_jugador/corazon_gui.tscn" id="2_kcjs4"]
+
+[node name="HudJugador" type="CanvasLayer"]
+script = ExtResource("1_36v68")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+position = Vector2(853, 40)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_2svor")
+region_enabled = true
+region_rect = Rect2(1226.33, 743.572, 992.482, 698.81)
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Control"]
+layout_mode = 0
+offset_left = 582.0
+offset_top = 84.0
+offset_right = 1141.0
+offset_bottom = 193.0
+theme_override_constants/h_separation = 0
+alignment = 1
+
+[node name="Corazon" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2
+
+[node name="Corazon2" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2
+
+[node name="Corazon3" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2
+
+[node name="Corazon4" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2
+
+[node name="Corazon5" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2
+
+[node name="Corazon6" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2
+
+[node name="Corazon7" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2
+
+[node name="Corazon8" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2
+
+[node name="Corazon9" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2
+
+[node name="Corazon10" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2
+
+[node name="Corazon11" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2
+
+[node name="Corazon12" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2
+
+[node name="Corazon13" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2
+
+[node name="Corazon14" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2
+
+[node name="Corazon15" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2
+
+[node name="Corazon16" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2
+
+[node name="Corazon17" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2
+
+[node name="Corazon18" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2
+
+[node name="Corazon19" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2
+
+[node name="Corazon20" parent="Control/HFlowContainer" instance=ExtResource("2_kcjs4")]
+layout_mode = 2

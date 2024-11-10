@@ -2,6 +2,11 @@ class_name Estado
 extends Node
 
 static var jugador: Jugador
+static var maquina_estados: MaquinaDeEstadoJugador
+
+#Que pasa cuando el estado se crea
+func init() -> void:
+	pass
 
 #Que pasa cuando el jugador entra este estado
 func entrar() -> void:

@@ -8,6 +8,7 @@ extends EstadoEnemigo
 @export_category("AI")
 
 var _direccion: Vector2
+var _danio_posicion: Vector2
 
 #Cuando empieza
 func init() -> void:
@@ -16,7 +17,7 @@ func init() -> void:
 #Que pasa cuando el jugador entra este estado
 func entrar() -> void:
 	enemigo.invulnerable = true
-	_direccion = enemigo.global_position.direction_to(enemigo.jugador.global_position)
+	_direccion = enemigo.global_position.direction_to(_danio_posicion)
 	enemigo.asignarDireccion(_direccion)
 	enemigo.velocity = _direccion*(-velocidad_noqueado)
 	enemigo.actualizarAnimacion(nombre_anim)
@@ -35,7 +36,8 @@ func proceso( _delta: float) -> EstadoEnemigo:
 func fisica (_delta: float) -> EstadoEnemigo:
 	return null
 
-func _cuando_enemigo_destruido() -> void:
+func _cuando_enemigo_destruido(caja_danio: CajaDeDanio) -> void:
+	_danio_posicion = caja_danio.global_position
 	maquina_estado.cambiarEstado(self)
 
 func _cuando_animacion_termino(_nombre: String) -> void:

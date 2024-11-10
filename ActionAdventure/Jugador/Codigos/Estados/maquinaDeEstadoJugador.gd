@@ -24,10 +24,17 @@ func inicializar(_jugador: Jugador) -> void:
 		if estado is Estado:
 			estados.append(estado)
 	
-	if estados.size() > 0:
-		estados[0].jugador = _jugador
-		cambiarEstado(estados[0])
-		process_mode = Node.PROCESS_MODE_INHERIT
+	if estados.size() == 0:
+		return
+	
+	estados[0].jugador = _jugador
+	estados[0].maquina_estados = self
+	
+	for estado in estados:
+		estado.init()
+	
+	cambiarEstado(estados[0])
+	process_mode = Node.PROCESS_MODE_INHERIT
 
 func cambiarEstado(estado_nuevo : Estado) -> void:
 	if estado_nuevo == null || estado_nuevo == estado_actual:

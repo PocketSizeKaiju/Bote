@@ -1,8 +1,7 @@
 class_name HitBox
 extends Area2D
 
-signal Daniado(valor_danio: int)
+signal Daniado(caja_danio: CajaDeDanio)
 
-func tomarGolpe(danio: int) -> void:
-	print("Ouch! ", danio)
-	Daniado.emit(danio)
+func tomarGolpe(caja_danio: CajaDeDanio) -> void:
+	Daniado.emit(caja_danio)
