@@ -5,5 +5,5 @@ func _ready() -> void:
 	$HitBox.Daniado.connect(tomoDanio)
 
 
-func tomoDanio(_danio: int) -> void:
+func tomoDanio(_hit_box: CajaDeDanio) -> void:
 	queue_free()

@@ -21,7 +21,7 @@ signal cambioDireccion(nueva_direccion: Vector2)
 signal jugador_daniado(caja_danio: CajaDeDanio)
 
 func _ready() -> void:
-	AdministradorGlobalJugador.jugador = self
+	AdministradorJugador.jugador = self
 	maquina_de_estados.inicializar(self)
 	hit_box.Daniado.connect(_tomar_danio)
 	actualizar_hp(99)

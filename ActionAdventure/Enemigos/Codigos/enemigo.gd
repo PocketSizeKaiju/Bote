@@ -21,7 +21,7 @@ var invulnerable: bool = false
 
 func _ready() -> void:
 	maquina_estado_enemigo.inicializar(self)
-	jugador = AdministradorGlobalJugador.jugador
+	jugador = AdministradorJugador.jugador
 	hit_box.Daniado.connect(_tomar_danio)
 
 func _physics_process(_delta: float) -> void:

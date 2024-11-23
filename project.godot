@@ -17,8 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-AdministradorGlobalJugador="*res://ActionAdventure/00 GLOBALES/administrador_global_jugador.gd"
+AdministradorNiveles="*res://ActionAdventure/00 GLOBALES/administrador_global_niveles.gd"
 HudJugador="*res://ActionAdventure/GUI/hud_jugador/hud_jugador.tscn"
+AdministradorJugador="*res://ActionAdventure/00 GLOBALES/administrador_global_jugador.gd"
 
 [dotnet]
 

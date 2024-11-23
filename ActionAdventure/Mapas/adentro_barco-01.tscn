@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://vvq38r4yitwx"]
+[gd_scene load_steps=5 format=3 uid="uid://vvq38r4yitwx"]
 
 [ext_resource type="Texture2D" uid="uid://dqi6occq6a78l" path="res://ActionAdventure/Mapas/Sprites/100493.png" id="1_1nhic"]
+[ext_resource type="Script" path="res://ActionAdventure/Mapas/TileMapNivel.gd" id="2_mjp8s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ia8ge"]
 texture = ExtResource("1_1nhic")
@@ -217,6 +218,24 @@ texture_region_size = Vector2i(32, 32)
 4:17/0 = 0
 5:17/0 = 0
 6:17/0 = 0
+7:7/0 = 0
+7:8/0 = 0
+7:9/0 = 0
+7:10/0 = 0
+7:11/0 = 0
+7:12/0 = 0
+7:13/0 = 0
+7:6/0 = 0
+7:2/0 = 0
+7:3/0 = 0
+7:4/0 = 0
+7:5/0 = 0
+7:14/0 = 0
+7:15/0 = 0
+7:16/0 = 0
+7:17/0 = 0
+7:1/0 = 0
+7:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_22um3"]
 tile_size = Vector2i(32, 32)
@@ -227,3 +246,5 @@ sources/0 = SubResource("TileSetAtlasSource_ia8ge")
 [node name="AdentroBarco-01" type="TileMapLayer"]
 z_index = -1
 tile_set = SubResource("TileSet_22um3")
+rendering_quadrant_size = 32
+script = ExtResource("2_mjp8s")
