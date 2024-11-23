@@ -14,10 +14,10 @@ func _ready():
 func cuando_termina_sfx() -> void:
 	queue_free()
 
-func _process(delta):
+func _process(_delta):
 	rotate_y(deg_to_rad(VELOCIDAD_ROTACION))
 
-func _cuando_entra_un_cuerpo(body_rid, body, body_shape_index, local_shape_index):
+func _cuando_entra_un_cuerpo(_body_rid, body, _body_shape_index, _local_shape_index):
 	if(body.name == "Bote"):
 		if(name.to_upper().contains("MONEDA")):
 			body.actualizar_tesoro()

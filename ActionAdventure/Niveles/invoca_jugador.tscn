@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://biam76gry6lpt"]
+
+[ext_resource type="Script" path="res://ActionAdventure/Niveles/Codigos/invocaJugador.gd" id="1_squr4"]
+[ext_resource type="Texture2D" uid="uid://ex54s12v5rf8" path="res://ActionAdventure/Jugador/Sprites/64175.png" id="1_uftht"]
+
+[node name="InvocaJugador" type="Node2D"]
+script = ExtResource("1_squr4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.184314, 0.956863, 0.831373, 0.443137)
+texture = ExtResource("1_uftht")
+hframes = 4
+vframes = 3

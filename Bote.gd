@@ -13,7 +13,7 @@ func _input(evento):
 	if evento is InputEventMouseMotion:
 		movimiento_cursor += evento.relative
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if movimiento_cursor != Vector2():
 		$H.rotation_degrees.y -= movimiento_cursor.x
 		$H/V.rotation_degrees.x -= movimiento_cursor.y

@@ -5,5 +5,5 @@ extends Camera3D
 func _ready(): 
 	get_viewport().transparent_bg = true
 
-func _process(delta):
+func _process(_delta):
 	position = Vector3(jugador.position.x, position.y, jugador.position.z)
