@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RecursoKeybinfJugador" load_steps=7 format=3 uid="uid://4yhhfdac0aub"]
+[gd_resource type="Resource" script_class="RecursoKeybindJugador" load_steps=7 format=3 uid="uid://4yhhfdac0aub"]
 
 [ext_resource type="Script" path="res://Menuseses/Opciones/recursos/RecursoKeybindJugador.gd" id="1_8rwa1"]
 

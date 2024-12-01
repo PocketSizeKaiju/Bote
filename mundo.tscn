@@ -1,15 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://dyhu5kamp485q"]
+[gd_scene load_steps=17 format=3 uid="uid://dyhu5kamp485q"]
 
 [ext_resource type="PackedScene" uid="uid://4pbnis58284y" path="res://bote.tscn" id="1_in02g"]
 [ext_resource type="Shader" path="res://aguita.gdshader" id="2_ea7l5"]
 [ext_resource type="PackedScene" uid="uid://dpene7g4htrjw" path="res://caja.tscn" id="3_aq71m"]
-[ext_resource type="Script" path="res://Crate.gd" id="3_t8j0i"]
+[ext_resource type="PackedScene" uid="uid://befy2cgdvb2bs" path="res://bote_malo.tscn" id="4_coupn"]
 [ext_resource type="Script" path="res://CamaraMiniMapa.gd" id="5_pgws6"]
-[ext_resource type="Texture2D" uid="uid://c35iva4dwulbf" path="res://Extras/assets/minimapIcon_jewelRed.png" id="5_qoeh6"]
 [ext_resource type="Texture2D" uid="uid://duort612t2fv0" path="res://Extras/assets/panel_woodDetail_blank.png" id="6_gxsxp"]
 [ext_resource type="PackedScene" uid="uid://bce08v0ypwy2a" path="res://trpiulante.tscn" id="8_hc08t"]
 [ext_resource type="Texture2D" uid="uid://bf7fodg0l8dqc" path="res://Extras/assets/pattern_blueprintPaper.png" id="8_l1uvh"]
-[ext_resource type="ArrayMesh" uid="uid://btplbs85uhcmx" path="res://Extras/botecito.obj" id="9_eh7q0"]
 [ext_resource type="PackedScene" uid="uid://duki6ia8t0hb" path="res://moneda.tscn" id="10_m6lyu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e6u8y"]
@@ -40,9 +38,6 @@ shader_parameter/wave_speed = 1.5
 [sub_resource type="PlaneMesh" id="PlaneMesh_7vrb6"]
 material = SubResource("ShaderMaterial_ho0at")
 size = Vector2(20, 20)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2v1wl"]
-points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5e64"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -91,61 +86,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3369, 0, 45.9932)
 [node name="Botes" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.69868, 0.145569, 54.4023)
 
-[node name="BoteMalo" type="RigidBody3D" parent="Botes"]
-script = ExtResource("3_t8j0i")
+[node name="BoteMalo" parent="Botes" instance=ExtResource("4_coupn")]
 
-[node name="Sprite3D" type="Sprite3D" parent="Botes/BoteMalo"]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 6.17822, -8.06829)
-layers = 512
-axis = 1
-billboard = 2
-texture = ExtResource("5_qoeh6")
+[node name="BoteMalo4" parent="Botes" instance=ExtResource("4_coupn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.6491, 0, -126.257)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Botes/BoteMalo"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.653504, -8.02454)
-mesh = ExtResource("9_eh7q0")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Botes/BoteMalo"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.0184631, -8.02454)
-shape = SubResource("ConvexPolygonShape3D_2v1wl")
-
-[node name="BoteMalo3" type="RigidBody3D" parent="Botes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.5137, 0.00769043, -3.21807)
-script = ExtResource("3_t8j0i")
-
-[node name="Sprite3D" type="Sprite3D" parent="Botes/BoteMalo3"]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 6.17822, -8.06829)
-layers = 512
-axis = 1
-billboard = 2
-texture = ExtResource("5_qoeh6")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Botes/BoteMalo3"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.653504, -8.02454)
-mesh = ExtResource("9_eh7q0")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Botes/BoteMalo3"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.0184631, -8.02454)
-shape = SubResource("ConvexPolygonShape3D_2v1wl")
-
-[node name="BoteMalo2" type="RigidBody3D" parent="Botes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.6417, 0, -78.2312)
-script = ExtResource("3_t8j0i")
-
-[node name="Sprite3D" type="Sprite3D" parent="Botes/BoteMalo2"]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -0.0997753, 6.57397, -8.0314)
-layers = 512
-axis = 1
-billboard = 2
-texture = ExtResource("5_qoeh6")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Botes/BoteMalo2"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.653504, -8.02454)
-mesh = ExtResource("9_eh7q0")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Botes/BoteMalo2"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.0184631, -8.02454)
-shape = SubResource("ConvexPolygonShape3D_2v1wl")
+[node name="BoteMalo5" parent="Botes" instance=ExtResource("4_coupn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.7177, 0, -137.905)
 
 [node name="Monedas" type="Node3D" parent="."]
 

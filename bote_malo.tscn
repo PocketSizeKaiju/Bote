@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://befy2cgdvb2bs"]
+
+[ext_resource type="Script" path="res://Crate.gd" id="1_037oe"]
+[ext_resource type="Script" path="res://bote_malo_area.gd" id="1_etehm"]
+[ext_resource type="Texture2D" uid="uid://c35iva4dwulbf" path="res://Extras/assets/minimapIcon_jewelRed.png" id="2_dmg4x"]
+[ext_resource type="ArrayMesh" uid="uid://btplbs85uhcmx" path="res://Extras/botecito.obj" id="3_tmtgx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pg0un"]
+size = Vector3(12, 9, 6.59534)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2v1wl"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[node name="BoteMalo" type="Node3D"]
+
+[node name="Body" type="RigidBody3D" parent="."]
+script = ExtResource("1_037oe")
+
+[node name="Area3D" type="Area3D" parent="Body"]
+script = ExtResource("1_etehm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 4, 0.286438)
+shape = SubResource("BoxShape3D_pg0un")
+
+[node name="Sprite3D" type="Sprite3D" parent="Body"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 6.17822, 0.142335)
+layers = 512
+axis = 1
+billboard = 2
+texture = ExtResource("2_dmg4x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.653504, 0.186085)
+mesh = ExtResource("3_tmtgx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.0184631, 0.186085)
+shape = SubResource("ConvexPolygonShape3D_2v1wl")
+
+[connection signal="body_shape_entered" from="Body" to="Body" method="_cuando_entra_un_cuerpo"]
+[connection signal="body_shape_entered" from="Body/Area3D" to="Body/Area3D" method="_cuando_entra_un_cuerpo"]
