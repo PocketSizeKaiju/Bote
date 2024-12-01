@@ -3,6 +3,8 @@ extends CanvasLayer
 var corazones: Array[CorazonGUI] = []
 
 func _ready() -> void:
+	if get_tree().get_current_scene().name != "playground":
+		visible = false
 	for corazon in $Control/HFlowContainer.get_children():
 		if corazon is CorazonGUI:
 			corazones.append(corazon)

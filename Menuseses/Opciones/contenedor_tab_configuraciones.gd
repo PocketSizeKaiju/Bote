@@ -5,7 +5,7 @@ extends Control
 
 signal Salir_Menu_Opciones
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	input_menu_opciones()
 
 func cambiar_tab(tab : int) -> void:
@@ -27,5 +27,5 @@ func input_menu_opciones() -> void:
 		var tab_anterior = tab_container.current_tab - 1
 		cambiar_tab(tab_anterior)
 	
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("ui_cancel") or Input.is_action_just_pressed("control"):
 		Salir_Menu_Opciones.emit()

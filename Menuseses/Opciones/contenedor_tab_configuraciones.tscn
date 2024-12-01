@@ -30,7 +30,7 @@ offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 3
+current_tab = 2
 
 [node name="Sonido" type="TabBar" parent="TabContainer"]
 visible = false
@@ -104,7 +104,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Controles" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -151,12 +150,17 @@ nombre_accion = "d"
 layout_mode = 2
 nombre_accion = "espacio"
 
+[node name="Boton_Rebind_Hotkey6" parent="TabContainer/Controles/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_mjyv1")]
+layout_mode = 2
+nombre_accion = "control"
+
 [node name="HSeparator2" type="HSeparator" parent="TabContainer/Controles/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
 theme_override_styles/separator = SubResource("StyleBoxEmpty_enslc")
 
 [node name="Accesibilidad" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 

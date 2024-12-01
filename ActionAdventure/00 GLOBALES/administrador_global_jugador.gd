@@ -6,9 +6,10 @@ var jugador: Jugador
 var jugador_invocado: bool = false
 
 func _ready() -> void:
-	agregar_instancia_jugador()
-	await get_tree().create_timer(0.2).timeout
-	jugador_invocado = true
+	if get_tree().get_current_scene().name == "playground":
+		agregar_instancia_jugador()
+		await get_tree().create_timer(0.2).timeout
+		jugador_invocado = true
 
 func agregar_instancia_jugador() -> void:
 	jugador = JUGADOR.instantiate()

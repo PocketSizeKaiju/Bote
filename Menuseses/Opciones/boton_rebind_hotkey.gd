@@ -30,6 +30,8 @@ func asignar_nombre_accion() -> void:
 			label.text = "Mover derecha"
 		"espacio":
 			label.text = "Salto"
+		"control":
+			label.text = "Ataque"
 
 func asignar_texto_para_boton() -> void:
 	var eventos_accion = InputMap.action_get_events(nombre_accion)

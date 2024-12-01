@@ -1,7 +1,7 @@
 extends Node
 
 @onready var CONFIGURACION_POR_DEFECTO : RecursosConfiguracionPorDefectos = preload("res://Menuseses/configuracionPorDefecto.tres")
-@onready var recurso_keybind : RecursoKeybinfJugador = preload("res://Menuseses/RecursoKeybindJugador.tres")
+@onready var recurso_keybind : RecursoKeybindJugador = preload("res://Menuseses/RecursoKeybindJugador.tres")
 
 var indice_modo_ventana : int = 0
 var indice_resolucion : int = 0
@@ -36,7 +36,8 @@ func crear_diccionario_keybind() -> Dictionary:
 		recurso_keybind.MOVER_DERECHA : recurso_keybind.tecla_mover_derecha,
 		recurso_keybind.MOVER_ARRIBA : recurso_keybind.tecla_mover_arriba,
 		recurso_keybind.MOVER_ABAJO : recurso_keybind.tecla_mover_abajo,
-		recurso_keybind.SALTAR : recurso_keybind.tecla_saltar
+		recurso_keybind.SALTAR : recurso_keybind.tecla_saltar,
+		recurso_keybind.ATACAR : recurso_keybind.tecla_atacar
 	}
 	return contenedor_diccionario_keybind
 
@@ -88,6 +89,8 @@ func obtener_keybind(accion : String):
 				return recurso_keybind.TECLA_MOVER_ABAJO_POR_DEFECTO
 			recurso_keybind.SALTAR:
 				return recurso_keybind.TECLA_SALTAR_POR_DEFECTO
+			recurso_keybind.ATACAR:
+				return recurso_keybind.TECLA_ATACAR_POR_DEFECTO
 	else:
 		match accion:
 			recurso_keybind.MOVER_IZQUIERDA:
@@ -100,6 +103,8 @@ func obtener_keybind(accion : String):
 				return recurso_keybind.tecla_mover_abajo
 			recurso_keybind.SALTAR:
 				return recurso_keybind.tecla_saltar
+			recurso_keybind.ATACAR:
+				return recurso_keybind.tecla_atacar
 
 func cuando_modo_ventana_seleccionado(indice : int) -> void:
 	indice_modo_ventana = indice
@@ -121,18 +126,21 @@ func cuando_keybinds_asignados(datos : Dictionary) -> void:
 	var mover_arriba_cargado = InputEventKey.new()
 	var mover_abajo_cargado = InputEventKey.new()
 	var saltar_cargado = InputEventKey.new()
+	var atacar_cargado = InputEventKey.new()
 	
 	mover_izquierda_cargado.set_physical_keycode(int(datos.a))
 	mover_derecha_cargado.set_physical_keycode(int(datos.d))
 	mover_arriba_cargado.set_physical_keycode(int(datos.w))
 	mover_abajo_cargado.set_physical_keycode(int(datos.s))
 	saltar_cargado.set_physical_keycode(int(datos.espacio))
+	atacar_cargado.set_physical_keycode(int(datos.control))
 	
 	recurso_keybind.tecla_mover_izquierda = mover_izquierda_cargado
 	recurso_keybind.tecla_mover_derecha = mover_derecha_cargado
 	recurso_keybind.tecla_mover_arriba = mover_arriba_cargado
 	recurso_keybind.tecla_mover_abajo = mover_abajo_cargado
 	recurso_keybind.tecla_saltar = saltar_cargado
+	recurso_keybind.tecla_atacar = atacar_cargado
 
 func asignar_keybind(accion : String, evento) -> void:
 	match accion:
@@ -146,6 +154,8 @@ func asignar_keybind(accion : String, evento) -> void:
 			recurso_keybind.tecla_mover_abajo = evento
 		recurso_keybind.SALTAR:
 			recurso_keybind.tecla_saltar = evento
+		recurso_keybind.ATACAR:
+			recurso_keybind.tecla_atacar = evento
 
 func cuando_datos_configuracion_cargados(datos : Dictionary) -> void:
 	datos_cargados = datos
